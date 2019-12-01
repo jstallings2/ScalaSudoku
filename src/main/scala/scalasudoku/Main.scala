@@ -18,20 +18,17 @@ object Main {
     }
     */
 
+    println("Initializing board...\n")
     puzzle.initializeBoard() // the hard-coded version with no file I/O
 
     // When fixed, this is the method to initalize the board from the text file
     // TODO: Uncomment this when fixed
     //puzzle.loadFromFile(filename)
+    println("Puzzle is:\n")
+    puzzle.displayBoard()
 
-
-
-    /*
-    println("Puzzle:\n")
-    println(puzzle)
     println("Solution:\n")
-    if (puzzle.solve) println(puzzle) // Print solved puzzle.
-    println("No Solution") // Indicate there is no solution.
-     */
+    if (puzzle.solve()) puzzle.displayBoard() // Print solved puzzle.
+    else println("No Solution") // Indicate there is no solution.
   }
 }

@@ -8,8 +8,20 @@ Java vs. Scala
 
 - "Unit =" is the same as saying "void"
 
-- for loop : for(i <- 0 until 10) will go from 0 to 9 (if you want to do a 10th loop, use "to" instead of "until"
+- for loop : for(i <- 0 until 10) will go from 0 to 9 ("until" is like <, "to" is like <=)
 
+- return is usually redundant in Scala, the last line of any method gets returned automatically
+
+- Stacks are deprecated in Scala nowadays. I used a List instead because apparently a Scala stack
+    is just a wrapper around a List. Peep the answer on this StackOverflow post where they replace push() and pop()
+    with two list operations:
+    https://stackoverflow.com/questions/43866787/scala-2-12-tells-me-stack-is-deprecated-how-to-replace-it-exactly-and-why-i-do
+    We use a mutable.List as a Stack with
+
+    elem +: list - prepends elem to list (like push)
+    list.head - returns the first element of list (like pop)
+
+    This way we still get the FIFO behavior we want
 
 
 
