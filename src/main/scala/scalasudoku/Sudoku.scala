@@ -15,15 +15,16 @@ class Sudoku {
     * @param filename the relative path of the text file.
     */
   def loadFromFile(filename: String): Unit = {
+    // FIXME
     val bufferedSource = Source.fromFile(filename)
     println("Board: ")
     for(i <- 0 until DIM) {
-      var line = bufferedSource.getLines() // get one line of text
+      val line = bufferedSource.getLines() // get one line of text
+      var str = line.toString()
+      val a = str.split(" ").map(_.toInt)
       for(j <- 0 until DIM) {
-        Board(i)(j) = line.next().toInt // get the next char and cast to Int
-        // FIXME: Keep getting java.lang.NumberFormatException. Think it may be trying to convert the whitespace to int
+        Board(i)(j) = a(j)
       }
-      println(line)
     }
   }
 
@@ -161,7 +162,6 @@ class Sudoku {
       }
       tcol = 0
     }
-    displayBoard()
     true
   }
 
@@ -170,9 +170,10 @@ class Sudoku {
     var poss = getPoss(row, col)
 
     while(poss.nonEmpty) {
-      Board(row)(col) = poss.head // pop the element off the "stack"
-      if(getNext(row, col))
-        return true
+      Board(row)(col) = poss.head // head doesn't remove the element from poss like pop does.
+      // So we have to set poss to tail
+      poss = poss.tail
+      if(getNext(row, col)) return true
       Board(row)(col) = 0
     }
     false
