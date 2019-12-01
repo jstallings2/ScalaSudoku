@@ -1,0 +1,26 @@
+Java vs. Scala
+
+- Scala uses () instead of [] for array indexing
+
+- Function parameters are like (row: Int) instead of (int row)
+
+- Scala infers types. Use var for variables and val instead for anything you would make const
+
+- "Unit =" is the same as saying "void"
+
+- for loop : for(i <- 0 until 10) will go from 0 to 9 (if you want to do a 10th loop, use "to" instead of "until"
+
+
+
+
+Steps
+
+1. For now, Intialize a hard-coded board (working)
+
+2. Load board from file (see loadFromFile, almost there)
+
+3. Display board (mostly to make sure initalizing the board works)
+
+4. Row, column, and subsquare checks
+
+5. Solver
