@@ -15,15 +15,14 @@ class Sudoku {
     * @param filename the relative path of the text file.
     */
   def loadFromFile(filename: String): Unit = {
-    // FIXME
+    // FIXME: Get it to stop throwing an exception
     val bufferedSource = Source.fromFile(filename)
     println("Board: ")
     for(i <- 0 until DIM) {
-      val line = bufferedSource.getLines() // get one line of text
-      var str = line.toString()
-      val a = str.split(" ").map(_.toInt)
+      val line = bufferedSource.getLines().toString().split(" ") // get one line of text
       for(j <- 0 until DIM) {
-        Board(i)(j) = a(j)
+        val num = line(j).toInt // this always throws NumberFormatException, can't find way around
+        Board(i)(j) = num
       }
     }
   }
