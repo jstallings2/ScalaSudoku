@@ -62,6 +62,14 @@ class Sudoku {
     */
   def solve(): Boolean = getNext(0, -1)
 
+  /**
+    * Return the possible values for a given position
+    * These values can be 1-9 as long as there is not that 
+    * same number in the rows, columns, or sub-sections of the coordinates
+    * @param row: Integer corresponding to row of sudoku board
+    * @param col: Integer corresponding to column of sudoku board
+    * @return list of possible number that can be placed in given position at time
+    */
   private def getPoss(row: Int, col: Int): List[Int] = {
     var poss = List[Int]()
     val taken = mutable.HashSet[Int]()
@@ -92,7 +100,13 @@ class Sudoku {
 
   }
 
-
+  /**
+    * Place a valid number in the next open space in the sudoku board
+    * @param row: Integer corresponding to row of sudoku board
+    * @param col: Integer corresponding to column of sudoku board
+    * @return boolean true if the remainder of the board can be completed from the given point
+    *      and false if the board cannot be completed
+    */
   private def getNext(row: Int, col: Int) : Boolean = {
 
     var tcol = col + 1
@@ -109,7 +123,12 @@ class Sudoku {
     true
   }
 
-
+  /**
+    * Try placing a number and reset the number if getNext does not work with the selection
+    * @param row: Integer corresponding to row of sudoku board
+    * @param col: Integer corresponding to column of sudoku board
+    * @return boolean true if getNext works with any possibilities, false otherwise
+    */
   private def placeNum(row: Int, col: Int): Boolean = {
     var poss = getPoss(row, col)
 
