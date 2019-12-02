@@ -15,16 +15,11 @@ class Sudoku {
     * @param filename the relative path of the text file.
     */
   def loadFromFile(filename: String): Unit = {
-    // FIXME: Get it to stop throwing an exception
     val bufferedSource = Source.fromFile(filename)
-    println("Board: ")
-    for(i <- 0 until DIM) {
-      val line = bufferedSource.getLines().toString().split(" ") // get one line of text
-      for(j <- 0 until DIM) {
-        val num = line(j).toInt // this always throws NumberFormatException, can't find way around
-        Board(i)(j) = num
-      }
-    }
+    val matrixLines = bufferedSource.getLines
+    val matrix = matrixLines.map(line => line.split(" ").map(_.toInt)).toArray
+    bufferedSource.close
+    Board = matrix
   }
 
   /**
@@ -47,7 +42,7 @@ class Sudoku {
   def rowToString(row: Int) : String = {
     var out = ""
     for(i <- 0 until DIM) {
-      var a = Board(i)(row)
+      val a = Board(i)(row)
       if(a == 0)
         out += " "
       else
@@ -62,56 +57,6 @@ class Sudoku {
   }
 
   /**
-    * Initialize the Board to all 0's
-    */
-  def initializeBoard() : Unit= {
-    for(ii <- 0 until DIM) {
-      for(jj <- 0 until DIM) {
-        Board(ii)(jj) = 0
-      }
-    }
-
-    // Hard coding the Board so we don't have to have file I/O working to test the rest
-    // This is the Board from sudoku-test1.txt
-    Board(0)(1) = 4
-    Board(0)(2) = 3
-    Board(0)(4) = 8
-    Board(0)(6) = 2
-    Board(0)(7) = 5
-
-    Board(1)(0) = 6
-
-    Board(2)(5) = 1
-    Board(2)(7) = 9
-    Board(2)(8) = 4
-
-    Board(3)(0) = 9
-    Board(3)(5) = 4
-    Board(3)(7) = 7
-
-    Board(4)(3) = 6
-    Board(4)(5) = 8
-
-    Board(5)(1) = 1
-    Board(5)(3) = 2
-    Board(5)(8) = 3
-
-    Board(6)(0) = 8
-    Board(6)(1) = 2
-    Board(6)(3) = 5
-
-    Board(7)(8) = 5
-
-    Board(8)(1) = 3
-    Board(8)(2) = 4
-    Board(8)(4) = 9
-    Board(8)(6) = 7
-    Board(8)(7) = 1
-
-
-  }
-
-  /**
     * Entry point for the solver
     * @return true if the puzzle can be solved, false otherwise
     */
@@ -119,7 +64,7 @@ class Sudoku {
 
   private def getPoss(row: Int, col: Int): List[Int] = {
     var poss = List[Int]()
-    var taken = mutable.HashSet[Int]()
+    val taken = mutable.HashSet[Int]()
 
     for(i <- 0 until DIM) {
       taken.add(Board(row)(i))

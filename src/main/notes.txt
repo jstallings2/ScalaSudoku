@@ -1,4 +1,4 @@
-Java vs. Scala
+Notes on Scala:
 
 - Scala uses () instead of [] for array indexing
 
