@@ -1,7 +1,8 @@
-# Project 4
-## CS 3270: Programming Languages
-## Team Members
+## ScalaSudoku - A Sudoku solver algorithm in Scala
 ### Taylor Pothast, Jacob Stallings, Lyndon Vickrey
+  
+  
+### This project was developed as part of an assignment
 
 
 ## Compiler/Interpreter
