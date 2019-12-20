@@ -1,5 +1,11 @@
-## ScalaSudoku - A Sudoku solver algorithm in Scala
-### Taylor Pothast, Jacob Stallings, Lyndon Vickrey
+# ScalaSudoku 
+## A Sudoku solver algorithm in Scala
+### Taylor Pothast, Jacob Stallings, Lyndon Vickrey  
+
+## Function  
+This program will take any unsolved sudoku puzzle as input provided the puzzle is input as a text file of integers separated by spaces, with nine integers per line. Please the the .txt files in the repo for examples of correct input format.
+
+The program outputs the solved puzzle if it can be solved, or "No solution" if the supplied puzzle is unsolvable.
   
   
 ### This project was developed as part of an assignment given in Dr. Robert Tairas's CS3270 course at Vanderbilt University.  
