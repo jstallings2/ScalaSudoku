@@ -2,7 +2,7 @@
 ### Taylor Pothast, Jacob Stallings, Lyndon Vickrey
   
   
-### This project was developed as part of an assignment
+### This project was developed as part of an assignment given in Dr. Robert Tairas's CS3270 course at Vanderbilt University.
 
 
 ## Compiler/Interpreter
